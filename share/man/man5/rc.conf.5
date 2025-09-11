@@ -672,7 +672,7 @@ The default is
 .Pq Vt str
 Names the firewall type from the selection in
 .Pa /etc/rc.firewall ,
-or the file which contains the local firewall ruleset.
+or the file or directory  which contains the local firewall ruleset.
 Valid selections from
 .Pa /etc/rc.firewall
 are:
@@ -691,8 +691,12 @@ basic protection for a workstation using stateful firewalling
 basic protection for a LAN.
 .El
 .Pp
-If a filename is specified, the full path
-must be given.
+If a filename is specified, the full path 
+must be given.  If a directory is specified, then 
+the directory should contain files containing headers 
+compatible with rcorder(8) as they will be sorted 
+in this order, and then ipfw(8) will be run on each, 
+as though each were a singular rules file.
 .Pp
 Most of the predefined rulesets define additional configuration variables.
 These are documented in
